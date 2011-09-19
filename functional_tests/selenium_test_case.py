@@ -4,7 +4,7 @@ from helpers import silence_print, unsilence_print
 from django.core.cache import cache
 import time
 
-class QiSeleniumTestCase(SeleniumTestCase):
+class DjangoFunctionalSeleniumTestCase(SeleniumTestCase):
     # selenium_fixtures = []
     
     def setUp(self, *args, **kwargs):
@@ -25,17 +25,17 @@ class QiSeleniumTestCase(SeleniumTestCase):
         sel.click(link)
         sel.wait_for_page_to_load("30000")
 
-class QiConservativeSeleniumTestCase(QiSeleniumTestCase):
+class DjangoFunctionalConservativeSeleniumTestCase(DjangoFunctionalSeleniumTestCase):
 
     def tearDown(self, *args, **kwargs):
-        super(QiConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
+        super(DjangoFunctionalConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
         _p = silence_print()
         call_command('flush', interactive=False)
         cache.clear()
         unsilence_print(_p)
 
 
-class QiUnitTestMixin(object):
+class DjangoFunctionalUnitTestMixin(object):
 
     def assertEqualQuerySets(self, q1, q2):
         self.assertEqual(list(q1),list(q2))
