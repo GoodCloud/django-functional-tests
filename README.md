@@ -163,3 +163,28 @@ class TestAccessControl(DjangoFunctionalConservativeSeleniumTestCase, AccountTes
         self.log_in(username="volunteer", password="volunteer")
         assert not sel.is_element_present("css=.admin_btn")
 ```
+
+
+## The Factory 
+
+`functional_tests` also provides a useful factory class that provides a number of useful methods in setting up tests, entering randomish data, and generally injecting entropy into your tests.  The code's pretty straightforward, just subclass and build out your app-specific methods.
+
+```
+class Factory(DjangoFunctionalFactory):
+
+    @classmethod
+    def address(cls):
+        apt_str = ""
+        if cls.rand_bool():
+            apt_str = "Apt. %s" % (cls.rand_int(1,1000))
+        address = {
+            "line_1": "%s %s %s" % (cls.rand_int(10,1000), cls.rand_plant_name(), cls.rand_street_suffix()),
+            "line_2": apt_str,
+            "city": cls.rand_plant_name(),
+            "state": cls.rand_us_state(),
+            "postal_code": cls.rand_int(10000,99999),
+            "primary": cls.rand_bool(),
+        }
+        return address
+
+```
