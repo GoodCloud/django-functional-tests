@@ -1,6 +1,6 @@
-This project will (but does not yet) provide a fairly easy way to get up and running with functional tests for Django.
+This project will provide a fairly easy way to get up and running with functional tests for Django, everything included.
 
-It's currently in the process of being abstracted from some integrated, in-house code.  This README will be updated when that changes.
+It's currently in the process of being abstracted from some integrated, in-house code.  This README will be updated when that changes - in the meantime, it should be considered highly in flux.
 
 
 Installation and requirements
@@ -14,6 +14,16 @@ Requires: (inital thoughts, don't trust these yet.)
 * django-nose
 * nose-exclude
 * django-nose-selenium
+* gunicorn
+* celery (do something smart to skip this)
+
+settings.py
+```
+FORCE_SELENIUM_TESTS = False
+SELENIUM_BROWSER_COMMAND = "*chrome"
+LIVE_SERVER_PORT = 8099
+SELENIUM_PORT = 64444
+```
 
 How to use
 ==========
