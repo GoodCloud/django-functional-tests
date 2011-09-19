@@ -7,6 +7,13 @@ Installation and requirements
 =============================
 
 
+Requires: (inital thoughts, don't trust these yet.)
+
+* djangosanetesting
+* nose
+* django-nose
+* nose-exclude
+* django-nose-selenium
 
 How to use
 ==========
@@ -17,13 +24,13 @@ After quite a bit of trial and error, we've found that this structure for tests 
 
 ```
 /app
-	__init__.py
-	models.py
-	/tests
-		/__init__.py
-		/unit_tests.py
-		/selenium_abstractions.py (abstractions specific to the a)
-		/selenium_tests.py
+  __init__.py
+  models.py
+  /tests
+     /__init__.py
+     /unit_tests.py
+     /selenium_abstractions.py (abstractions specific to the a)
+     /selenium_tests.py
 ```
 
 Where:

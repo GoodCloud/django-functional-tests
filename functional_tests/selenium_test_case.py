@@ -1,6 +1,5 @@
 from djangosanetesting.cases import SeleniumTestCase
 from django.core.management import call_command
-from helpers import silence_print, unsilence_print
 from django.core.cache import cache
 import time
 
@@ -29,10 +28,8 @@ class DjangoFunctionalConservativeSeleniumTestCase(DjangoFunctionalSeleniumTestC
 
     def tearDown(self, *args, **kwargs):
         super(DjangoFunctionalConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
-        _p = silence_print()
         call_command('flush', interactive=False)
         cache.clear()
-        unsilence_print(_p)
 
 
 class DjangoFunctionalUnitTestMixin(object):
