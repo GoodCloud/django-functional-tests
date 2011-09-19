@@ -63,7 +63,7 @@ After quite a bit of trial and error, we've found that this structure for tests 
 Where:
 
 * `unit_tests.py` contains unit tests, django client tests, etc
-* `selenium_abstractions.py` contains one or more classes that provide functional, common actions specific to the app. 
+* `selenium_abstractions.py` contains one or more classes that provide functional, common actions specific to the app. Expect them to be mixed in across apps.
 * `selenium_tests.py` contains the actual tests, subclassing one or more `selenium_abstractions` classes from this and other apps
 
 
@@ -93,6 +93,7 @@ def test_something(self):
 ```
 
 Tips:
+
 * In general, the [selenium python API](http://release.seleniumhq.org/selenium-remote-control/0.9.0/doc/python/) is the best resource for what's available. 
 * Sizzle.js is included, so if you use `css=` in your selector, you have access to pretty much all of the selectors you'd have in jQuery.
 
@@ -140,8 +141,12 @@ class AccountTestAbstractions(object):
 
 ### Writing some tests
 
+accounts/tests/selenium_tests.py
 
 ```
+from functional_tests.selenium_test_case import DjangoFunctionalConservativeSeleniumTestCase
+from accounts.tests.selenium_abstractions import AccountTestAbstractions
+
 class TestAccessControl(DjangoFunctionalConservativeSeleniumTestCase, AccountTestAbstractions):
 
     def test_that_staff_and_volunteers_can_not_see_the_account_link(self):
