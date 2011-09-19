@@ -32,7 +32,7 @@ How to use
 
 `functional_tests` provides a set of useful classes you can use to easily write selenium tests, and a `manage.py` command to run them.
 
-== Running Tests
+## Running Tests
 
 `./manage.py selenium_tests`
 
@@ -45,7 +45,7 @@ or just
 `./manage.py selenium_tests accounts.tests.selenium_tests:TestAccessControl`
 
 
-== Test Structure
+## Test Structure
 
 After quite a bit of trial and error, we've found that this structure for tests works quite well.  However, the library doesn't lock you in - this is just a reccomended best practice.
 
@@ -68,9 +68,9 @@ Where:
 
 
 
-== Writing Tests
+## Writing Tests
 
-=== General Test Structure 
+### General Test Structure 
 
 Tests generally go something like this:
 
@@ -98,7 +98,7 @@ Tips:
 
 
 
-=== Writing some useful abstractions
+### Writing some useful abstractions
 
 These examples are pulled mostly verbatim and trimmed from the GoodCloud codebase.  They're not perfectly illustrative, but they are real examples.
 
@@ -138,7 +138,7 @@ class AccountTestAbstractions(object):
 ```
 
 
-=== Writing some tests
+### Writing some tests
 
 
 ```
