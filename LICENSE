@@ -1,5 +1,6 @@
 django-functional-tests is released under the BSD License.  Have at it.
 
+Note that selenium and sizzle.js are bundled in here. They're not a part of the copyright and license below. I believe that their licenses allow this bundling, but I am not a lawyer. If I'm wrong, please email me at steven@agoodcloud.com, and I'll get things fixed right.
 
 Copyright (c) 2011, Steven Skoczen, GoodCloud, LLC.
 All rights reserved.

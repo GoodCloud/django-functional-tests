@@ -12,8 +12,6 @@ Requires: (inital thoughts, don't trust these yet.)
 * djangosanetesting
 * nose
 * django-nose
-* nose-exclude
-* django-nose-selenium
 * gunicorn
 * celery (do something smart to skip this)
 
@@ -56,7 +54,7 @@ After quite a bit of trial and error, we've found that this structure for tests 
   /tests
      /__init__.py
      /unit_tests.py
-     /selenium_abstractions.py (abstractions specific to the a)
+     /selenium_abstractions.py (abstractions specific to the app)
      /selenium_tests.py
 ```
 
@@ -95,7 +93,7 @@ def test_something(self):
 Tips:
 
 * In general, the [selenium python API](http://release.seleniumhq.org/selenium-remote-control/0.9.0/doc/python/) is the best resource for what's available. 
-* Sizzle.js is included, so if you use `css=` in your selector, you have access to pretty much all of the selectors you'd have in jQuery.
+* [sizzle.js](http://sizzlejs.com/) is included, so if you use `css=` in your selector, you have access to pretty much all of the selectors you'd have in jQuery.
 
 
 
