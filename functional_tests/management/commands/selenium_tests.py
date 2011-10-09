@@ -38,7 +38,7 @@ class Command(BaseCommand):
         selenium_subprocess = subprocess.Popen(sel_command,shell=True,              **outputs )
         gunicorn_subprocess = subprocess.Popen(gun_command,shell=True,              **outputs )
         celery_subprocess = subprocess.Popen(cel_command,shell=True,                **outputs )
-        file_uploader_subprocess = subprocess.Popen(file_uploader_command,shell=True, cwd=join(settings.PROJECT_ROOT,"apps/data_import/tests/test_file_uploaders"), **outputs )
+        file_uploader_subprocess = subprocess.Popen(file_uploader_command,shell=True, cwd=join(settings.PROJECT_ROOT,"templates/test_file_uploads"), **outputs )
 
         from django.core.cache import cache
         cache.clear()
