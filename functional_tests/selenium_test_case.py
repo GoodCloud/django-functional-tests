@@ -2,6 +2,10 @@ from djangosanetesting.cases import SeleniumTestCase
 from django.core.management import call_command
 from django.core.cache import cache
 import time
+try:
+    from celery.task.control import discard_all
+except:
+    pass
 
 class DjangoFunctionalSeleniumTestCase(SeleniumTestCase):
     # selenium_fixtures = []
@@ -30,6 +34,10 @@ class DjangoFunctionalConservativeSeleniumTestCase(DjangoFunctionalSeleniumTestC
         super(DjangoFunctionalConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
         call_command('flush', interactive=False)
         cache.clear()
+        try:
+            discard_all()
+        except:
+            pass
 
 
 class DjangoFunctionalUnitTestMixin(object):
