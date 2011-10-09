@@ -30,14 +30,16 @@ class DjangoFunctionalSeleniumTestCase(SeleniumTestCase):
 
 class DjangoFunctionalConservativeSeleniumTestCase(DjangoFunctionalSeleniumTestCase):
 
+
     def tearDown(self, *args, **kwargs):
-        super(DjangoFunctionalConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
-        call_command('flush', interactive=False)
-        cache.clear()
         try:
             discard_all()
         except:
             pass
+        super(DjangoFunctionalConservativeSeleniumTestCase,self).tearDown(*args, **kwargs)
+        call_command('flush', interactive=False)
+        cache.clear()
+        
 
 
 class DjangoFunctionalUnitTestMixin(object):
