@@ -26,7 +26,7 @@ class Command(BaseCommand):
         gunicorn_subprocess = subprocess.Popen(gun_command,shell=True, stderr=output, stdout=output)
         celery_subprocess = subprocess.Popen(cel_command,shell=True, stderr=output, stdout=output)
         try:
-            call_command('test', "--with-selenium", "--with-selenium-fixtures", "--with-xunit",
+            call_command('test', "--with-selenium", "--with-xunit",
                                  "--with-xcoverage", *args, xcoverage_file="coverage.xml", xunit_file="xmlrunner/nosetests.xml", **options )
             output.close()    
         except:
