@@ -46,3 +46,14 @@ class DjangoFunctionalUnitTestMixin(object):
 
     def assertEqualQuerySets(self, q1, q2):
         self.assertEqual(list(q1),list(q2))
+
+
+class DjangoFunctionalConservativeUnitTestMixin(DjangoFunctionalUnitTestMixin):
+    def tearDown(self, *args, **kwargs):
+        try:
+            discard_all()
+        except:
+            pass
+        super(DjangoFunctionalConservativeUnitTestMixin,self).tearDown(*args, **kwargs)
+        call_command('flush', interactive=False)
+        cache.clear()
