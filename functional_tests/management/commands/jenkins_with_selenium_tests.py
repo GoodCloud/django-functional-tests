@@ -30,7 +30,7 @@ class Command(BaseCommand):
 
         sel_command =  "java -jar %(lib_path)s/selenium-server.jar -timeout 30 -port %(selenium_port)s -userExtensions %(lib_path)s/user-extensions.js" % lots_of_options_dict
         gun_command =  "sleep 17;%(ve_path)s/bin/python manage.py run_gunicorn -w 2 -b 0.0.0.0:%(http_port)s --settings=envs.%(test_server_settings)s" % lots_of_options_dict
-        cel_command =  "sleep 17;python manage.py celeryd --settings=envs.%(test_server_settings)s" % lots_of_options_dict
+        cel_command =  "sleep 17;%(ve_path)s/bin/python manage.py celeryd --settings=envs.%(test_server_settings)s" % lots_of_options_dict
         file_uploader_command = "%(ve_path)s/bin/python -m SimpleHTTPServer 8199" % lots_of_options_dict
         selenium_subprocess = subprocess.Popen(sel_command,shell=True, **outputs)
         gunicorn_subprocess = subprocess.Popen(gun_command,shell=True, **outputs)
