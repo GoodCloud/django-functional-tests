@@ -44,8 +44,7 @@ class Command(BaseCommand):
         time.sleep(15)
 
         try:
-            call_command('test', "--with-selenium", "--with-xunit",
-                                 "--with-xcoverage", *args, xcoverage_file="coverage.xml", xunit_file="xmlrunner/nosetests.xml", **options )
+            call_command('test', "--with-selenium", "--with-xunit", *args, xunit_file="nosetests.xml", path=settings.PROJECT_ROOT, **options )
             output.close()    
         except:
             pass
