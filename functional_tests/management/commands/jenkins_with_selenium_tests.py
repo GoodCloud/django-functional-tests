@@ -37,9 +37,6 @@ class Command(BaseCommand):
         celery_subprocess = subprocess.Popen(cel_command,shell=True, **outputs)
         file_uploader_subprocess = subprocess.Popen(file_uploader_command,shell=True, cwd=join(settings.PROJECT_ROOT,"templates/test_file_uploads"), **outputs )
 
-        from django.core.cache import cache
-        cache.clear()
-
         # Give everything time to spin up.  Ridiculous, but necessary.
         time.sleep(10)
 

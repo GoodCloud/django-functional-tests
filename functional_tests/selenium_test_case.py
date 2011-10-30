@@ -27,6 +27,14 @@ class DjangoFunctionalSeleniumTestCase(SeleniumTestCase):
         sel = self.selenium
         sel.click(link)
         sel.wait_for_page_to_load("30000")
+    
+    def close(self):
+        sel = self.selenium
+        sel.get_eval("this.browserbot.getUserWindow().close()")
+        try:
+            sel.get_confirmation()
+        except:
+            pass
 
 class DjangoFunctionalConservativeSeleniumTestCase(DjangoFunctionalSeleniumTestCase):
 

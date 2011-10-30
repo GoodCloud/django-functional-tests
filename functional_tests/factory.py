@@ -5,6 +5,7 @@ import base64
 from decimal import getcontext, Decimal
 getcontext().prec = 7
 from django.contrib.localflavor.us.us_states import STATE_CHOICES
+from functional_tests.lib.chomsky import generate_chomsky
 
 class DjangoFunctionalFactory:
     @classmethod
@@ -74,6 +75,10 @@ class DjangoFunctionalFactory:
             return cls.valid_test_cc_number()
         else:
             return cls.invalid_test_cc_number()
+
+    @classmethod
+    def random_conversation(cls, paragraphs=3):
+        return generate_chomsky(paragraphs)
 
 
 
