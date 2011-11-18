@@ -19,10 +19,13 @@ Requires: (inital thoughts, don't trust these yet.)
 settings.py
 
 ```
+FUNCTIONAL_TEST_SERVER_SETTINGS = "env.dev"
 FORCE_SELENIUM_TESTS = False
 SELENIUM_BROWSER_COMMAND = "*chrome"
+# Defaults:
 LIVE_SERVER_PORT = 8099
 SELENIUM_PORT = 64444
+VIRTUALENV_PATH = "" # Assumes `functional_tests` is installed in a virtualenv.
 ```
 
 How to use
