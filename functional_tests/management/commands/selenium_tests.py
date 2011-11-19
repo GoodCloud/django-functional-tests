@@ -44,7 +44,6 @@ def setup_selenium_stack(worker_index, verbosity, options):
         test_settings = "sel_worker_%s" % worker_index
     
     test_server_settings = "--settings=%s" % test_settings
-    print test_server_settings
 
 
     lots_of_options_dict = {
@@ -69,8 +68,7 @@ def setup_selenium_stack(worker_index, verbosity, options):
     gun_command =  "%(ve_path)s/bin/python manage.py run_gunicorn -w 2 -b 0.0.0.0:%(http_port)s %(test_server_settings)s" % lots_of_options_dict
     cel_command =  "%(ve_path)s/bin/python manage.py celeryd %(test_server_settings)s" % lots_of_options_dict
     file_uploader_command = "%(ve_path)s/bin/python -m SimpleHTTPServer %(file_uploader_port)s" % lots_of_options_dict
-    print gun_command
-    
+
     subprocesses = []    
     # subprocesses.append(subprocess.Popen(sync_command, shell=True, **outputs ))
     subprocesses.append(subprocess.Popen(sel_command, shell=True, **outputs ))
@@ -101,11 +99,9 @@ def teardown_selenium_stack(worker_index, subprocesses, silent_output):
     except:
         pass
     try:
-        print '%s/sel_worker_%s.py' % (manage_folder, worker_index)
         os.remove('%s/sel_worker_%s.py' % (manage_folder, worker_index))
         os.remove('%s/sel_worker_%s.pyc' % (manage_folder, worker_index))
     except Exception, e:
-        print e
         pass
 
     print "Stopping..."
@@ -199,7 +195,6 @@ class Command(BaseCommand):
         subprocess_stacks = []
         output_files = []
         results = []
-        print "Starting stacks..."
         for base_port in range(0,num_processes):
             results.append(self._pool.apply_async(setup_selenium_stack, [base_port, verbosity, options]))
 
@@ -222,4 +217,3 @@ class Command(BaseCommand):
             
         self._pool.close()
         self._pool.join()
-        print "Stacks closed."

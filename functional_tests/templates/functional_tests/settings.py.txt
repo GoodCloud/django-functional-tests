@@ -3,7 +3,6 @@ from {{test_runner_settings}} import *
 {% else %}
 from settings import *
 {% endif %}
-print locals()
 
 SELENIUM_TESTING = True
 if 'test_' not in DATABASES['default']['NAME']:
