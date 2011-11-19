@@ -1,0 +1,10 @@
+{% if test_runner_settings %}
+from {{test_runner_settings}} import *
+{% else %}
+from settings import *
+{% endif %}
+print locals()
+
+SELENIUM_TESTING = True
+if 'test_' not in DATABASES['default']['NAME']:
+    DATABASES['default']['NAME'] = 'test_{{worker_index}}_%s' % (DATABASES['default']['NAME'])
